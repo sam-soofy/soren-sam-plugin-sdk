@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  sam-lms-plugin:
+    image: YOUR_ACCOUNT_REPO/example-plugin:0.1.1-slim
+    ports:
+      - "80:80"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
