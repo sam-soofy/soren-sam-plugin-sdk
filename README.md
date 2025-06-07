@@ -2,27 +2,31 @@ A pythonic SDK to help generating and accelerating plugin developments with mult
 
 # Soren SCM Source Control Management Provider (Plugin) [Example Template]
 
-This project is a **Soren Plugin** (also called Tool on Marketplace) for integrating Source Control Management (SCM) systems with the Soren platform. It serves as an **example/template** plugin with multiple **providers**, originally based on a plugin integration, and is intended to be adapted for SCM plugin development in future steps. It exposes a set of methods (actions) via REST APIs, enabling workflow automation and integration with external services.
+This project is a **Soren Plugin** (also called Tool on Marketplace) for integrating Source Control Management (SCM) systems with the Soren platform. It serves as an **example/template** plugin with multiple **providers**, originally based on a plugin integration, and is intended to be adapted for SCM plugin development in future steps. It exposes a set of methods (actions) via REST APIs, enabling workflow automation and integration with external services. **(We use the Tool & Plugin interchangeably)**
 
 ---
 
-## What is a Soren Provider (Plugin)?
+## What is a Soren Plugin (Tool)?
 
-A **Soren Provider** is a modular tool that implements the [Soren Plugins Protocol](#soren-plugins-protocol) to expose a set of methods (API actions) through a standardized REST interface. Providers are designed to be:
+A **Soren Plugin** is a modular tool that implements the [Soren Plugins Protocol](#soren-plugins-protocol) to expose a set of methods (API actions) through a standardized REST interface. Plugins are designed to be:
 - **Extensible**: Easily add new methods for new APIs or workflows.
 - **Auto-discoverable**: Methods are registered automatically.
 - **Reusable**: Common SDK patterns and utilities for all providers.
 
 ### Soren Plugins Protocol
-- Each provider exposes methods as REST endpoints.
+- Each plugin/provider exposes methods as REST endpoints.
 - Methods are described with metadata and parameter schemas.
 - The platform auto-discovers and registers all available methods.
 
+## What is a Provider in Plugin?
+
+A **provider** is simply a service provider that usually plugins may interact with to provide functionalites, as a pluged-in tool into Soren workflow. The provider term and some configs may be optional and skipped if only one provider is necessary in a specific plugin.
+
 ---
 
-## Provider SDK Architecture
+## Plugin SDK Architecture
 
-The Provider SDK offers a blueprint for building new providers:
+The Plugin SDK offers a blueprint for building new plugins with multiple providers:
 
 ### Directory Structure
 
@@ -107,7 +111,7 @@ registry.auto_discover("src.providers")
 
 ## REST API Endpoints
 
-The provider exposes the following endpoints (by default, **on port 80**):
+The plugin exposes the following endpoints (by default, **on port 80**):
 
 - `GET    /api/methods` — List all registered methods
 - `GET    /api/method/{method_name}` — Get configuration for a method
@@ -201,7 +205,7 @@ The OpenAPI Method Generator helps you quickly scaffold Soren-compatible provide
 
 ## Configuration
 
-Global provider configuration is defined in `src/config.py` under the `plugin_config` dictionary. You must keep the top-level protocol keys intact; you may only add or update entries in the `init_config` list.
+Global plugin configuration is defined in `src/config.py` under the `plugin_config` dictionary. You must keep the top-level protocol keys intact; you may only add or update entries in the `init_config` list.
 
 ### Multi-provider credentials
 In the default template we define two tokens in the `global_configs` section for GitHub and GitLab:
