@@ -9,6 +9,7 @@ This project is a **Soren Plugin** (also called Tool on Marketplace) for integra
 ## What is a Soren Plugin (Tool)?
 
 A **Soren Plugin** is a modular tool that implements the [Soren Plugins Protocol](#soren-plugins-protocol) to expose a set of methods (API actions) through a standardized REST interface. Plugins are designed to be:
+- **Provider**: Easily add, organize and use multiple service provider (optional)
 - **Extensible**: Easily add new methods for new APIs or workflows.
 - **Auto-discoverable**: Methods are registered automatically.
 - **Reusable**: Common SDK patterns and utilities for all providers.
@@ -307,7 +308,7 @@ $ docker push YOUR_ACCOUNT_REPO/example-plugin:0.1-1.0.1-slim
 
 ```sh
 # Run locally (detached)
-$ docker-compose up -d
+$ docker compose -f docker-compose.yml  down --remove-orphans && clear && docker compose -f docker-compose.yml up 
 ```
 
 ---

@@ -8,6 +8,7 @@ __pycache__/
 
 # Sam custom files
 my-notes.txt
+my-docker-compose.yml
 
 # Distribution / packaging
 .Python

@@ -43,8 +43,10 @@ class PluginRegistry:
         """Recursively auto-discover and register PluginMethod instances in the given package"""
         try:
             package = importlib.import_module(package_name)
+
         except ImportError:
             return
+
         for finder, name, is_pkg in pkgutil.walk_packages(
             package.__path__, package.__name__ + "."
         ):
