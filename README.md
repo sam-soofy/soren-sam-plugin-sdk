@@ -305,10 +305,12 @@ $ docker push YOUR_ACCOUNT_REPO/example-plugin:0.1-1.0.1-slim
 ```
 
 ### Local Development
+Check the composer file and update replacement parts, then run the following command.
+Consider simplifying the command if you know docker and what you need and what you do not.
 
 ```sh
 # Run locally (detached)
-$ docker compose -f docker-compose.yml  down --remove-orphans && clear && docker compose -f docker-compose.yml up 
+$ docker compose -f docker-compose.yml  down --remove-orphans && clear && docker compose -f docker-compose.yml up  --build
 ```
 
 ---

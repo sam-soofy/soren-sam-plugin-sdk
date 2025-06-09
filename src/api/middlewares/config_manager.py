@@ -2,7 +2,7 @@ import json
 import os
 from typing import Any, Dict, Optional
 
-from config import plugin_config
+from src.config import plugin_config
 
 
 class ConfigManager:

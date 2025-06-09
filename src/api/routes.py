@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Body, HTTPException, Request
 
-from config import plugin_config
+from src.config import plugin_config
 from src.plugin_sdk.controller import PluginController
 from src.plugin_sdk.registry import PluginRegistry
 
@@ -46,10 +46,11 @@ async def get_methods():
     }
 
 
-@router.get("/method/{method_name}")
+@router.get("/methods/{method_name}")
 async def get_method_config(method_name: str):
     """Return configuration for specific method"""
     try:
+        print(method_name, "\n")
         method_config = registry.get_method_config(method_name)
 
         return {
@@ -61,7 +62,7 @@ async def get_method_config(method_name: str):
         raise HTTPException(status_code=404, detail="Method not found")
 
 
-@router.post("/method/{method_name}", response_model=StandardResponse)
+@router.post("/methods/{method_name}", response_model=StandardResponse)
 async def execute_method(method_name: str, request: Request):
     """Execute a method based on its name"""
     try:

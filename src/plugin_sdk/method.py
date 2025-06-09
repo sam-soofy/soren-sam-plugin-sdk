@@ -4,8 +4,8 @@ import httpx
 from fastapi import HTTPException
 from pydantic import BaseModel, Field, create_model
 
-from config import BASE_URLS
 from src.api.middlewares.config_manager import ConfigManager
+from src.config import BASE_URLS
 
 
 class ParameterDefinition(BaseModel):

@@ -3,8 +3,9 @@ version: "3.8"
 services:
   sam-lms-plugin:
     image: YOUR_ACCOUNT_REPO/example-plugin:0.1.1-slim
+    # build: . # or you can build the image locally  if you are developing
     ports:
-      - "80:8000"
+      - "8000:80"
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000"]
